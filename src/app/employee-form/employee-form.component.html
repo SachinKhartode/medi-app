@@ -1,0 +1,83 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Add Employee</h4>
+          </div>
+          <div class="content">
+            <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input type="hidden" class="form-control" id="EmployeeID" required [(ngModel)]="employee.EmployeeID" name="EmployeeID" />
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="FirstName" required [(ngModel)]="employee.FirstName" name="FirstName" />
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="LastName" required [(ngModel)]="employee.LastName" name="LastName" />
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="EmpCode">Emp Code:</label>
+                    <input type="text" class="form-control" id="EmpCode" required [(ngModel)]="employee.EmpCode" name="EmpCode" />
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="Position">Position:</label>
+                    <select class="form-control" id="Position" required [(ngModel)]="employee.Position" name="Position">
+                      <option *ngFor="let p of Positions" [value]="p">{{p}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="Office">Office:</label>
+                    <input type="text" class="form-control" id="Office" required [(ngModel)]="employee.Office" name="Office" />
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group pull-right">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <!-- [disabled]="!employeeForm.form.valid" -->
+                    <button type="button" class="btn btn-default" (click)="resetForm(employeeForm);">Reset</button>
+                  </div>
+                </div>
+              </div>
+          
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<toaster-container></toaster-container>
