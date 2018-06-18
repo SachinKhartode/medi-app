@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router'
 import {ToasterModule, ToasterService} from 'angular2-toaster';
-import { DataTableResource  } from '../data-table';
+import { DataTableResource } from '../data-table';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 import { Employee } from '../Shared/employee';
@@ -17,7 +17,7 @@ import { style } from '@angular/animations';
 })
 
 export class EmployeeListComponent implements OnInit {
-
+ // @ViewChild(DataTable) empTable:DataTable;
   constructor(public employeeService:EmployeeService, private router: Router, private toastr: ToasterService) { }
   
   itemCount = 0;
@@ -38,6 +38,12 @@ export class EmployeeListComponent implements OnInit {
         this.gloabItems = this.items;
         this.itemResource = new DataTableResource(data.json());
         this.itemCount = this.items.length;
+        // if(this.itemCount > 10){
+        //   this.empTable.limit = 10;
+        //   this.empTable._triggerReload();
+          //}
+        // else
+        // {this.empTable.limit = this.itemCount;}
       },
       err=>{
         console.log(err);
@@ -47,19 +53,27 @@ export class EmployeeListComponent implements OnInit {
 
   reloadItems(params) {//debugger;
     if(this.itemResource !=undefined){
-      this.itemResource.query(params).then(items => this.items = items);
+      this.itemResource.query(params).then(items => this.items = this.gloabItems);
+      this.itemCount = this.gloabItems.length;
       this.search = '';
     }
   }
 
   onSearch(value:string) {
     this.items = this.gloabItems.filter(item=> item.FirstName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0 
-    || item.LastName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
-    || item.EmpCode.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
-    || item.Position.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
-    || item.Office.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0);
+     || item.LastName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
+     || item.EmpCode.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
+     || item.Position.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
+     || item.Office.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0
+    );
+   
     this.itemResource = new DataTableResource(this.gloabItems);
     this.itemCount = this.items.length;
+    // if(this.itemCount > 10){
+    //   this.empTable.limit = 10;
+    //   this.empTable._triggerReload();}
+    // else
+    // {this.empTable.limit = this.itemCount;}
   }
 
   onExport() {debugger;

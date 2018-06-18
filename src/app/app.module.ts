@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToasterModule } from 'angular2-toaster';
-import {ToasterService } from 'angular2-toaster';
+import { ToasterModule } from 'angular2-toaster';
+import { ToasterService } from 'angular2-toaster';
 import { DataTableModule } from './data-table';
+import { MyDatePickerModule } from './my-date-picker';
 
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routing';
@@ -44,9 +46,10 @@ import { EmployeeService } from './Shared/employee-form.service';
     NavbarModule,
     FooterModule,
     SidebarModule,
-    DataTableModule
+    DataTableModule,
+    MyDatePickerModule
   ],
-  providers: [Employee,EmployeeService, ToasterService],
+  providers: [Employee,EmployeeService, ToasterService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

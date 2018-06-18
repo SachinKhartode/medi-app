@@ -13,5 +13,6 @@ export class Employee {
         public EmpCode: string;
         public Position: string;
         public Office: string;
+        public DOB: any;
     
 }

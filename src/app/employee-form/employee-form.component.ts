@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import {ToasterService} from 'angular2-toaster';
+import {IMyDpOptions} from '../my-date-picker';
 
 import { Employee } from '../Shared/employee';
 import { EmployeeService } from '../Shared/employee-form.service'
@@ -17,8 +18,12 @@ import { EmployeeService } from '../Shared/employee-form.service'
 
 export class EmployeeFormComponent implements OnInit {
 
-  submitted = false;
-  
+  //submitted = false;
+  public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd-mm-yyyy',
+  };
+
   Positions = ['Software', 'Finance', 'HR', 'Admin'];
 
   constructor(public employee:Employee,
@@ -28,7 +33,7 @@ export class EmployeeFormComponent implements OnInit {
   ) { 
     }
 
-  ngOnInit() {
+  ngOnInit() {debugger;
       //params['id']
       //var employeeID = 0;
       //this.route.queryParams.subscribe(params => {      
@@ -38,12 +43,16 @@ export class EmployeeFormComponent implements OnInit {
       if(employeeID != null){
          this.employeeService.getEmployee(employeeID).subscribe(data => {
             this.employee = data.json() as Employee;  
+            this.employee.DOB = { date: { year: this.employee.DOB, month: this.employee.DOB, day: this.employee.DOB } };
           }
           ,err => console.log(err)
           );
       }
       else{
         this.resetForm();
+        //this.employee.DOB = new Date();
+        this.employee.DOB = { date: { year: this.employee.DOB, month: this.employee.DOB, day: this.employee.DOB } };
+ 
       }
   }
 
@@ -66,7 +75,7 @@ export class EmployeeFormComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     
-    this.submitted = true;
+    //this.submitted = true;
     debugger;
     if (form.value.EmployeeID == null) {
       this.employeeService.postEmployee(form.value)
