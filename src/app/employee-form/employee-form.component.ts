@@ -33,7 +33,7 @@ export class EmployeeFormComponent implements OnInit {
   ) { 
     }
 
-  ngOnInit() {debugger;
+  ngOnInit() {
       //params['id']
       //var employeeID = 0;
       //this.route.queryParams.subscribe(params => {      
@@ -76,7 +76,6 @@ export class EmployeeFormComponent implements OnInit {
   onSubmit(form: NgForm) {
     
     //this.submitted = true;
-    debugger;
     if (form.value.EmployeeID == null) {
       this.employeeService.postEmployee(form.value)
         .subscribe(data => {

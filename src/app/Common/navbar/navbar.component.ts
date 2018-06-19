@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { DataService } from "../../Shared/data.service";
 
 @Component({
     // moduleId: module.id,
@@ -13,16 +14,20 @@ export class NavbarComponent implements OnInit{
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    public isUserLoggedIn: boolean;
 
-    constructor(location: Location,  private element: ElementRef) {
+    constructor(private data: DataService, location: Location,  private element: ElementRef) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+      debugger;
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+    
+      this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../Shared/auth.service';
 import { User } from '../Shared/User';
+import { DataService } from "../Shared/data.service";
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,23 @@ import { User } from '../Shared/User';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  public isUserLogin: boolean = false;
+  public isUserLoggedIn: boolean = false;
   @Output() checkUserLoginEvent = new EventEmitter<boolean>();
 
   user: User = new User();
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(private data: DataService, private router: Router, private auth: AuthService) {
 
   }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
   }
 
   onLogin(): void {
     debugger;
-    this.isUserLogin = true;
-    this.checkUserLoginEvent.emit(this.isUserLogin);
+    this.isUserLoggedIn = true;
+        
+    this.data.changeMessage(this.isUserLoggedIn);
 
     this.router.navigateByUrl('/employee-list');
     // this.auth.login(this.user)

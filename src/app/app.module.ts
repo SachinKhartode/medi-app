@@ -23,6 +23,8 @@ import { EmployeeService } from './Shared/employee-form.service';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './Shared/auth.service';
 import { HomeComponent } from './home/home.component';
+
+import { DataService } from "./Shared/data.service";
 // const appRoutes: Routes = [
 //   { path: 'Employee-Form', component: EmployeeFormComponent },
 //   { path: 'Employee-List', component: EmployeeListComponent },
@@ -54,7 +56,7 @@ import { HomeComponent } from './home/home.component';
     DataTableModule,
     MyDatePickerModule
   ],
-  providers: [Employee,EmployeeService, ToasterService,DatePipe,AuthService],
+  providers: [Employee,EmployeeService, ToasterService,DatePipe,AuthService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
