@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit{
     private toggleButton: any;
     private sidebarVisible: boolean;
     public isUserLoggedIn: boolean;
+    public LoggedInUserName: string;
 
     constructor(private data: DataService, location: Location,  private element: ElementRef) {
       this.location = location;
@@ -26,8 +27,8 @@ export class NavbarComponent implements OnInit{
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-    
       this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
+      this.data.userCurrentMessage.subscribe(LoggedInUserName => this.LoggedInUserName = LoggedInUserName)
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -63,6 +64,6 @@ export class NavbarComponent implements OnInit{
               return this.listTitles[item].title;
           }
       }
-      return 'Dashboard';
+      return 'Login';
     }
 }

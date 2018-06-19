@@ -7,6 +7,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { Employee } from '../Shared/employee';
 import { EmployeeService } from '../Shared/employee-form.service'
 import { style } from '@angular/animations';
+import { DataService } from "../Shared/data.service";
 
 @Component({
   selector: 'app-employee-list',
@@ -17,8 +18,9 @@ import { style } from '@angular/animations';
 })
 
 export class EmployeeListComponent implements OnInit {
+  public isUserLoggedIn: boolean;
  // @ViewChild(DataTable) empTable:DataTable;
-  constructor(public employeeService:EmployeeService, private router: Router, private toastr: ToasterService) { }
+  constructor(private data: DataService, public employeeService:EmployeeService, private router: Router, private toastr: ToasterService) { }
   
   itemCount = 0;
   //employeeList = [];
@@ -28,7 +30,17 @@ export class EmployeeListComponent implements OnInit {
   public search:String = '';//search filter model
 
   ngOnInit() {
-    this.getEmployees();
+
+    this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
+
+    if(this.isUserLoggedIn){
+      this.getEmployees();
+    }
+    else
+    {
+      this.router.navigate(['/login']);
+    }
+
   }
 
   getEmployees(){

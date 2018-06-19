@@ -19,14 +19,13 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-  isUserLogin :any = false;
   public isUserLoggedIn: boolean;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    
+
     this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
   }
 

@@ -1,26 +1,52 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+        <!-- <div class="col-md-12 card"> -->
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <br>
         <div class="card">
-          <div class="header">
-              <h1>Login</h1>
-              <hr>
+          <div style="
+          padding-bottom: 5px!important;
+          vertical-align: bottom;
+          padding-top: 1px!important;
+          padding-left: 10px;
+          color: white;
+          background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
+          background-size: 150% 150%;">
+              <h3>
+                  <img src="../../assets/img/default-avatar.png" width="30px" style="border-radius: 50%" height="30px">
+                  Admin Login
+              </h3>
           </div>
           <div class="content">
             <div class="row">
-              <div class="col-md-4">
-                <form (ngSubmit)="onLogin()" novalidate>
+              <div class="col-md-12">
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                   <div class="form-group">
                     <label for="email">User Id</label>
-                    <input type="text" class="form-control" id="UserID" placeholder="enter User Id" [(ngModel)]="user.UserID" name="UserID" required>
+                    <input type="text" class="form-control" 
+                    id="userId"
+                    placeholder="Enter user id" 
+                    formControlName="userId" 
+                    name="userId" required>
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="enter password" [(ngModel)]="user.password" name="password"
-                      required>
+                    <input type="password" class="form-control" 
+                    id="password" 
+                    placeholder="enter password" 
+                    formControlName="password" 
+                    name="password"
+                    required>
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <div class="form-group pull-right">
+                    <button type="submit" 
+                    [disabled]="!loginForm.invalid" 
+                    class="btn btn-success"
+                    (click)="onLogin()">Login</button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -28,6 +54,9 @@
           </div>
         </div>
       </div>
+      <div class="col-md-4">
+      </div>
+    <!-- </div> -->
     </div>
   </div>
 </div>
