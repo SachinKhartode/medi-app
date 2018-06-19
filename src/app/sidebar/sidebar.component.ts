@@ -8,7 +8,7 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: 'employee-form', title: 'Add Employee',  icon:'pe-7s-user', class: '' },
+    { path: 'employee-registration', title: 'Employee Registration',  icon:'pe-7s-user', class: '' },
     { path: 'employee-list', title: 'Employee List',  icon:'pe-7s-note2', class: '' },
 ];
 
@@ -18,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  isUserLogin :any = false;
 
   constructor() { }
 

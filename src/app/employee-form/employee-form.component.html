@@ -82,6 +82,28 @@
                 </div>
               </div>
 
+              <!-- <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="Office">Office:</label>
+                    <input type="text" class="form-control" 
+                    id="Office" 
+                    [(ngModel)]="employee.Office" 
+                    name="Office"
+                    pattern="\d{4}"
+                    maxlength="4"
+                    minlength="4"
+                    #Office="ngModel"/>
+                  </div>
+                  <div *ngIf="Office.invalid && (Office.dirty || Office.touched)" class="alert alert-danger">
+                    <div *ngIf="Office.errors.pattern || Office.errors.minlength || Office.errors.maxlength">
+                      enter 4 digits only
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              
+
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">

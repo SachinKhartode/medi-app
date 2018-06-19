@@ -101,7 +101,7 @@ export class EmployeeListComponent implements OnInit {
 
   showForEdit(EmployeeID: number) {
     //this.employeeService.selectedEmployee = Object.assign({}, emp);
-    this.router.navigate(['/employee-form',{id: EmployeeID}]);
+    this.router.navigate(['/employee-registration',{id: EmployeeID}]);
   }
 
   addNewEmployee(pageName:string){
