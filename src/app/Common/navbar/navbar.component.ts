@@ -21,9 +21,13 @@ export class NavbarComponent implements OnInit{
       this.location = location;
           this.sidebarVisible = false;
     }
+    
+    onLogout() {
+        //remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+    }
 
     ngOnInit(){
-      debugger;
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];

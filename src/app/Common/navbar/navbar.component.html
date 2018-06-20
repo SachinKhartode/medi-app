@@ -18,12 +18,12 @@
                     <a *ngIf="!isUserLoggedIn" href="#" routerLink="/login" routerLinkActive="active">
                         <p>Admin Login </p>
                     </a>
-                    <a *ngIf="isUserLoggedIn" href="javascript:void();" >
+                    <a *ngIf="isUserLoggedIn" href="javascript:void(null);" >
                         <p>Logged In User: {{LoggedInUserName}} </p>
                     </a>
                 </li>
                 <li *ngIf="isUserLoggedIn">
-                    <a href="#">
+                    <a href="#" (ngClick)="onLogout()">
                         <p>Log out</p>  
                     </a>
                 </li>
