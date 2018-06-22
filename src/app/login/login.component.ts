@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   public LoggedInUserName: string = "";
 
   @Output() checkUserLoginEvent = new EventEmitter<boolean>();
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
+  public loginForm: FormGroup;
+  public loading = false;
+  public submitted = false;
   //user: User = new User();
 
   constructor
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() 
   {
+    this.loading = false;
     this.createForm();
     localStorage.removeItem('currentUser');
 
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
   {debugger;
     console.log(this.loginForm.value);
     this.submitted = true;
-    //this.loading = true;
+    this.loading = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
@@ -92,7 +93,7 @@ export class LoginComponent implements OnInit {
       this.toastr.pop('error', 'Login', 'Login failed.');
       this.loading = false;
     });
-
+    //this.loading = false;
    // this.createForm();
   }
 

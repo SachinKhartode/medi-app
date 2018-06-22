@@ -9,6 +9,7 @@ import { ToasterModule } from 'angular2-toaster';
 import { ToasterService } from 'angular2-toaster';
 import { DataTableModule } from './data-table';
 import { MyDatePickerModule } from './my-date-picker';
+import { ExporttoexcelComponent } from  './exporttoexcel.component/exporttoexcel.component';
 
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routing';
@@ -36,7 +37,8 @@ import { DataService } from "./Shared/data.service";
     EmployeeFormComponent,
     EmployeeListComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ExporttoexcelComponent
   ],
   imports: [
     BrowserModule,

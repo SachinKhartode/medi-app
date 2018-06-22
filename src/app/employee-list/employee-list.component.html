@@ -55,6 +55,7 @@
 <div style="margin: auto; max-width: 1000px; ">
   <div class="form-group pull-right">
     <button class="btn btn-default" id="export" style="padding-top: 4px;" (click)="onExport();">Export</button>
+    <export-to-excel [data]="items" style="padding-top: 4px;"></export-to-excel> 
   </div>
 </div>
 
@@ -133,5 +134,4 @@
 
   </data-table>
 </div>
-
 <toaster-container></toaster-container>

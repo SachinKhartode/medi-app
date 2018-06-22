@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {Router} from '@angular/router'
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+import { Router} from '@angular/router'
+import { ToasterService} from 'angular2-toaster';
 import { DataTableResource } from '../data-table';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
-import { Employee } from '../Shared/employee';
 import { EmployeeService } from '../Shared/employee-form.service'
-import { style } from '@angular/animations';
 import { DataService } from "../Shared/data.service";
 
 @Component({
@@ -65,7 +63,8 @@ export class EmployeeListComponent implements OnInit {
 
   reloadItems(params) {//debugger;
     if(this.itemResource !=undefined){
-      this.itemResource.query(params).then(items => this.items = this.gloabItems);
+      this.itemResource.query(params).then(items => this.items = items);
+      this.items= this.gloabItems;
       this.itemCount = this.gloabItems.length;
       this.search = '';
     }
