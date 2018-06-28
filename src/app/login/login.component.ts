@@ -15,6 +15,7 @@ import { DataService } from "../Shared/data.service";
 export class LoginComponent implements OnInit {
   public isUserLoggedIn: boolean = false;
   public LoggedInUserName: string = "";
+  public themeColor:string;
 
   @Output() checkUserLoginEvent = new EventEmitter<boolean>();
   public loginForm: FormGroup;
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
 
     this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn);
     this.data.userCurrentMessage.subscribe(LoggedInUserName => this.LoggedInUserName = LoggedInUserName);
+    this.data.colorCurrentMessage.subscribe(themeColor => this.themeColor = themeColor)
   }
 
   private createForm() 

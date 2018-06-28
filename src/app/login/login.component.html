@@ -7,49 +7,49 @@
       <div class="col-md-4">
         <br>
         <div class="card">
-          <div style="
-          padding-bottom: 5px!important;
-          vertical-align: bottom;
-          padding-top: 1px!important;
-          padding-left: 10px;
-          color: white;
-          background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
-          background-size: 150% 150%;">
-            <h3>
-              <img src="../../assets/img/default-avatar.png" width="30px" style="border-radius: 50%" height="30px"> Admin Login
-            </h3>
+          <div class="loginbar" [attr.data-color]="themeColor" data-image="">
+            <!-- </div>
+                background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
+            background-size: 150% 150%;
+              -->
+            <div style="
+              padding-bottom: 5px!important;
+              vertical-align: bottom;
+              padding-left: 10px;">
+              <h3>
+                <img src="../../assets/img/default-avatar.png" width="30px" style="border-radius: 50%; margin-top:-5px;" height="30px">
+                <span class="simple-text"> Admin Login</span>
+              </h3>
+              <div class="loginbar-background" style="background-image: url(/assets/img/sidebar-5.jpg)"></div>
+            </div>
           </div>
+
           <div class="content">
             <div class="row">
               <div class="col-md-12">
                 <form [formGroup]="loginForm">
                   <div class="form-group">
                     <label for="email">User Id</label>
-                    <input type="text" 
-                      class="form-control" 
-                      [ngClass]="{ 'is-invalid': submitted && f.userId?.errors }" 
-                      id="userId" 
-                      placeholder="Enter user id"
-                      formControlName="userId" 
-                      name="userId" required>
+                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userId?.errors }" id="userId" placeholder="Enter user id"
+                      formControlName="userId" name="userId" required>
                     <div *ngIf="submitted && f.userId?.errors" class="" style="color:red">
-                      <div *ngIf="f.userId?.errors.required"><img src="../../assets/img/error.png" style="vertical-align: text-top;" width="15px" height="15px">User id is required</div>
+                      <div *ngIf="f.userId?.errors.required">
+                        <img src="../../assets/img/error.png" style="vertical-align: text-top;" width="15px" height="15px">User id is required</div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" 
-                      class="form-control" 
-                      id="password" 
-                      [ngClass]="{ 'is-invalid': submitted && f.password?.errors }" 
-                      placeholder="Enter password"
+                    <input type="password" class="form-control" id="password" [ngClass]="{ 'is-invalid': submitted && f.password?.errors }" placeholder="Enter password"
                       formControlName="password" name="password" required>
                     <div *ngIf="submitted && f.password?.errors" class="" style="color:red">
-                     <div *ngIf="f.password?.errors.required"><img src="../../assets/img/error.png" style="vertical-align: text-top;" width="15px" height="15px">Password is required</div>
+                      <div *ngIf="f.password?.errors.required">
+                        <img src="../../assets/img/error.png" style="vertical-align: text-top;" width="15px" height="15px">Password is required</div>
                     </div>
                   </div>
                   <div>
-                    &nbsp;&nbsp;<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                    &nbsp;&nbsp;
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                    />
                     <div class="form-group pull-right">
                       <button type="submit" (click)="onLogin()" class="btn btn-success">Login</button>
                     </div>

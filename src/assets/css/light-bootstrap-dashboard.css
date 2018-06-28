@@ -1271,7 +1271,7 @@ input:focus {
   .navbar .btn-simple {
     font-size: 16px; }
   .navbar.fixed {
-    width: calc(100% - $sidebar-width);
+    width: calc(100% - sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0; }
@@ -2930,3 +2930,163 @@ input:focus {
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch; } }
+
+  /*Below css is added later*/
+
+  .headerbar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-height:61px;
+      display: block;
+      z-index: 5;
+      color: #fff;
+      font-weight: 200;
+      background-size: cover;
+      background-position: center center;
+  }
+
+  .headerbar:before{
+      display: block;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+  }
+
+  .headerbar:after{
+      display: block;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+  }
+
+  .headerbar[data-color="blue"]:after {
+    background: linear-gradient(to bottom, #1F77D0 0%, #533ce1 100%);
+    background-size: 150% 150%; 
+  }
+  .headerbar[data-color="azure"]:after {
+    background: linear-gradient(to bottom, #1DC7EA 0%, #4091ff 100%);
+    background-size: 150% 150%; 
+  }
+  .headerbar[data-color="green"]:after {
+    background: linear-gradient(to bottom, #87CB16 0%, #6dc030 100%);
+    background-size: 150% 150%; 
+  }
+  .headerbar[data-color="orange"]:after {
+    background: linear-gradient(to bottom, #FFA534 0%, #ff5221 100%);
+    background-size: 150% 150%; 
+  }
+  .headerbar[data-color="red"]:after 
+  {  
+    background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
+    background-size: 150% 150%; 
+  }
+  .headerbar[data-color="purple"]:after 
+  {
+    background: linear-gradient(to bottom, #9368E9 0%, #943bea 100%);
+    background-size: 150% 150%; 
+  }
+  
+  .headerbar[data-image]:after, .headerbar.has-image:after{
+      opacity: .77;
+  }
+  
+  .headerbar-background{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: block;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center center;
+  }
+  
+  /*login page css */
+
+  .loginbar{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height:61px;
+    display: block;
+    z-index: 5;
+    color: #fff;
+    font-weight: 200;
+    background-size: cover;
+    background-position: center center;
+}
+
+.loginbar:before{
+    display: block;
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.loginbar:after{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.loginbar[data-color="blue"]:after {
+  background: linear-gradient(to bottom, #1F77D0 0%, #533ce1 100%);
+  background-size: 150% 150%; 
+}
+.loginbar[data-color="azure"]:after {
+  background: linear-gradient(to bottom, #1DC7EA 0%, #4091ff 100%);
+  background-size: 150% 150%; 
+}
+.loginbar[data-color="green"]:after {
+  background: linear-gradient(to bottom, #87CB16 0%, #6dc030 100%);
+  background-size: 150% 150%; 
+}
+.loginbar[data-color="orange"]:after {
+  background: linear-gradient(to bottom, #FFA534 0%, #ff5221 100%);
+  background-size: 150% 150%; 
+}
+.loginbar[data-color="red"]:after 
+{  
+  background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
+  background-size: 150% 150%; 
+}
+.loginbar[data-color="purple"]:after 
+{
+  background: linear-gradient(to bottom, #9368E9 0%, #943bea 100%);
+  background-size: 150% 150%; 
+}
+
+.loginbar[data-image]:after, .headerbar.has-image:after{
+    opacity: .77;
+}
+
+.loginbar-background{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+}

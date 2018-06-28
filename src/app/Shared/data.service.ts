@@ -12,6 +12,10 @@ export class DataService {
   private userMessageSource = new BehaviorSubject("");
   userCurrentMessage = this.userMessageSource.asObservable();
 
+  //for theam color
+  private colorMessageSource = new BehaviorSubject("red");
+  colorCurrentMessage = this.colorMessageSource.asObservable();
+
   constructor() { }
 
   changeMessage(isUserLoggedIn: boolean) {
@@ -21,4 +25,9 @@ export class DataService {
   changeUser(LoggedInUserName: string) {
     this.userMessageSource.next(LoggedInUserName)
   }
+
+  changeColor(themeColor: string) {
+    this.colorMessageSource.next(themeColor)
+  }
+
 }

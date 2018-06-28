@@ -16,10 +16,12 @@ export class NavbarComponent implements OnInit{
     private sidebarVisible: boolean;
     public isUserLoggedIn: boolean;
     public LoggedInUserName: string;
+    public themeColor:string;
+    public switcherShowHide:boolean = false;
 
     constructor(private data: DataService, location: Location,  private element: ElementRef) {
-      this.location = location;
-          this.sidebarVisible = false;
+        this.location = location;
+        this.sidebarVisible = false;
     }
     
     onLogout() {
@@ -27,10 +29,20 @@ export class NavbarComponent implements OnInit{
         localStorage.removeItem('currentUser');
     }
 
+    setColor(color:string){
+        this.themeColor = color;
+        this.data.changeColor(this.themeColor);
+    }
+
+    showHideSwitcher(){
+        this.switcherShowHide = !this.switcherShowHide;
+    }
+
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+
       this.data.currentMessage.subscribe(isUserLoggedIn => this.isUserLoggedIn = isUserLoggedIn)
       this.data.userCurrentMessage.subscribe(LoggedInUserName => this.LoggedInUserName = LoggedInUserName)
     }
