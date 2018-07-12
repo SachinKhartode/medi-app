@@ -74,7 +74,7 @@
         right: 0px;
     }
 </style>
-<nav class="navbar headerbar">
+<nav class="navbar headerbar" style="position: relative!important;">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" (click)="sidebarToggle()">
@@ -91,15 +91,15 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a style="color:white!important" *ngIf="!isUserLoggedIn" href="#" routerLink="/login" routerLinkActive="active">
+                    <a style="color:white!important;z-index: 3;" *ngIf="!isUserLoggedIn" href="#" routerLink="/login" routerLinkActive="active">
                         <p>Admin Login </p>
                     </a>
-                    <a style="color:white!important" *ngIf="isUserLoggedIn" href="javascript:void(null);">
+                    <a style="color:white!important;z-index: 3;" *ngIf="isUserLoggedIn" href="javascript:void(null);">
                         <p>Logged In User: {{LoggedInUserName}} </p>
                     </a>
                 </li>
-                <li style="color:white!important" *ngIf="isUserLoggedIn">
-                    <a href="#" (ngClick)="onLogout()">
+                <li style="color:white!important;z-index: 3;" *ngIf="isUserLoggedIn">
+                    <a style="color:white!important;z-index: 3;" href="#" (ngClick)="onLogout()">
                         <p>Log out</p>
                     </a>
                 </li>

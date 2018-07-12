@@ -4,16 +4,18 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { EmployeeFormComponent } from './employee-form/employee-form.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ExpiredProductListComponent } from './expired-product-list/expired-product-list.component';
 import { LoginComponent } from './login/login.component';
 
 export const appRoutes: Routes =[
-    { path: 'employee-registration',      component: EmployeeFormComponent },
-    { path: 'employee-list',      component: EmployeeListComponent },
+    { path: 'product-registration',      component: ProductFormComponent },
+    { path: 'product-list',      component: ProductListComponent },
+    { path: 'expired-product-list',      component: ExpiredProductListComponent },
     { path: 'login',              component: LoginComponent },
     { path: 'home',              component: HomeComponent },
-    { path: '**',                   redirectTo: 'employee-registration', pathMatch: 'full' }
+    { path: '**',                   redirectTo: 'product-registration', pathMatch: 'full' }
 ];
 
 // @NgModule({

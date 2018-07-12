@@ -17,28 +17,30 @@ import { NavbarModule } from './Common/navbar/navbar.module';
 import { FooterModule } from './Common/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 
-import { EmployeeFormComponent } from './employee-form/employee-form.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component'
-import { Employee } from './Shared/employee'
-import { EmployeeService } from './Shared/employee-form.service';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductListComponent } from './product-list/product-list.component'
+import { ExpiredProductListComponent } from './expired-product-list/expired-product-list.component';
+import { Product } from './Shared/Product'
+import { ProductService } from './Shared/product.service';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './Shared/auth.service';
 import { HomeComponent } from './home/home.component';
 
 import { DataService } from "./Shared/data.service";
 // const appRoutes: Routes = [
-//   { path: 'Employee-Form', component: EmployeeFormComponent },
-//   { path: 'Employee-List', component: EmployeeListComponent },
+//   { path: 'product-form', component: ProductFormComponent },
+//   { path: 'product-list', component: ProductListComponent },
 // ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeFormComponent,
-    EmployeeListComponent,
+    ProductFormComponent,
+    ProductListComponent,
     LoginComponent,
     HomeComponent,
-    ExporttoexcelComponent
+    ExporttoexcelComponent,
+    ExpiredProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { DataService } from "./Shared/data.service";
     DataTableModule,
     MyDatePickerModule
   ],
-  providers: [Employee,EmployeeService, ToasterService,DatePipe,AuthService,DataService],
+  providers: [Product,ProductService, ToasterService,DatePipe,AuthService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

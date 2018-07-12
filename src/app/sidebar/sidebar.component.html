@@ -70,12 +70,12 @@
         </li>
         <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li> -->
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
-            <a *ngIf="menuItem.title !='Employee List'; else other_content" [routerLink]="[menuItem.path]">
+            <a *ngIf="menuItem.title =='Product Registration'; else other_content" [routerLink]="[menuItem.path]">
                 <i class="{{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>
             </a>
             <ng-template #other_content>
-                <a *ngIf="isUserLoggedIn && menuItem.title =='Employee List'" [routerLink]="[menuItem.path]">
+                <a *ngIf="isUserLoggedIn && (menuItem.title =='Product List' || menuItem.title =='Product Expiry Notifications')" [routerLink]="[menuItem.path]">
                     <i class="{{menuItem.icon}}"></i>
                     <p>{{menuItem.title}}</p>
                 </a>

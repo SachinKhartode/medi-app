@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 
 @Component({
   selector: 'export-to-excel',
-  template : '<button class="btn btn-warning btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true">&nbsp;</i>Export</button>'
+  template : '<button class="btn btn-warning btn-sm" style="padding: 6px 18px;"><i class="fa fa-file-excel-o" aria-hidden="true">&nbsp;</i>Export</button>'
 })
 export class ExporttoexcelComponent {
 
@@ -36,7 +36,7 @@ export class ExporttoexcelComponent {
     return dataNew;
   }
 
-  sheetName: string = "Employee List";
+  sheetName: string = "Product List";
   workbook: XLSX.WorkBook = {
     Sheets: {},
     SheetNames: [],
@@ -68,7 +68,7 @@ export class ExporttoexcelComponent {
         if (range.e.r < R) range.e.r = R;
         if (range.e.c < C) range.e.c = C;
         var cell = { v: data[R][C], t: 's' , s : {}};
-        //debugger;
+
         // if (R === 0){
         //   cell.s = {"font" : {"bold" : true, "sz" : 13, "alignment" : { "horizontal" : "center", "vertical" : "center"}}};          
         // }
@@ -121,7 +121,7 @@ export class ExporttoexcelComponent {
   }
 
   downloadExcel(): void {
-    FileSaver.saveAs(new Blob([this.s2ab(this.generateExcelFile())], { type: "application/octet-stream" }), "Employee_List.xlsx");
+    FileSaver.saveAs(new Blob([this.s2ab(this.generateExcelFile())], { type: "application/octet-stream" }), "Product_List.xlsx");
   }
 
 }

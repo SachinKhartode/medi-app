@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onLogin(): void 
-  {debugger;
+  {
     console.log(this.loginForm.value);
     this.submitted = true;
     this.loading = true;
@@ -72,12 +72,12 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.loginForm.value)
     .then((response) => {
-      if(response["_body"] != undefined)
+      if(response.statusText == "OK" && response["_body"] != undefined && response["_body"] != "null")
       {
         localStorage.setItem('currentUser', response["_body"]);
         console.log(response["_body"]);
-        this.router.navigateByUrl('/employee-list');
-        this.toastr.pop('success', 'Login', 'You login in successfully.');
+        this.router.navigateByUrl('/product-list');
+        this.toastr.pop('success', 'Success', 'You login in successfully.');
 
         this.isUserLoggedIn = true;
         this.data.changeMessage(this.isUserLoggedIn);
@@ -86,13 +86,14 @@ export class LoginComponent implements OnInit {
         this.data.changeUser(this.LoggedInUserName);
       }
       else{
-        this.toastr.pop('error', 'Login', 'User Id does not exists.');
+        this.toastr.pop('error', 'Fail', 'User Id does not exists.');
       }
     })
     .catch((err) => { 
       console.log(err);
       this.router.navigateByUrl('/login');
-      this.toastr.pop('error', 'Login', 'Login failed.');
+      this.toastr.pop('error', 'Fail', 'Please check Web Api is running.');
+      this.toastr.pop('error', 'Fail', 'Login failed.');
       this.loading = false;
     });
     //this.loading = false;

@@ -1,0 +1,127 @@
+<style>
+  .btn{
+    padding: 3px!important;
+    /* border: none!important; */
+  }
+  .form-control{
+      height: 34px!important;
+  }
+</style>
+<div style="margin-top: 8px;">
+    
+<div style="margin: auto; max-width: 1000px; ">
+    <div class="form-group pull-right">
+        <button class="btn btn-warning btn-sm" (click)="getExpiryProducts();" style="padding: 6px 18px!important;"><i class="fa fa-search" aria-hidden="true">&nbsp;</i>Search</button>
+    </div>
+</div>  
+
+<div style="margin: auto; max-width: 1000px; ">
+    <div class="form-group pull-right">
+      <!-- <input type="text" class="form-control" style="width:300px;" [(ngModel)] ="search" id="search" name="search" placeholder="Search" (input)="onSearch(search)"> -->
+      <select class="form-control" id="filter" required [(ngModel)]="filter" name="filter">
+        <option [value]="0">Todays Expiry</option>
+        <option [value]="7">Next 7 Days Expiry</option>
+        <option [value]="30">Next 30 Days Expiry</option>
+        <option [value]="60">Next 60 Days Expiry</option>
+        <option [value]="90">Next 90 Days Expiry</option>
+        <option [value]="180">Next 180 Days Expiry</option>
+        <option [value]="365">Next 365 Days Expiry</option>
+      </select>
+    </div>
+</div>
+
+<div style="margin: auto; max-width: 1000px; ">
+  <div class="form-group pull-right">
+    <!-- <button class="btn btn-default" id="export" style="padding-top: 4px;" (click)="onExport();">Export</button> -->
+    <export-to-excel [data]="exportItems" style="padding-top: 4px;"></export-to-excel> 
+  </div>
+</div>
+
+<div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="persons-grid"
+      headerTitle="Product Expiry List"
+      [items]="items"
+      [itemCount]="itemCount"
+      (reload)="reloadItems($event)"
+      [limit]="10"
+      [sortBy]="'ExpiryDate'"
+      [sortAsc]="false"
+      >
+      <!-- [selectColumn]="true"
+      [multiSelect]="false"
+      [substituteRows]="false"
+      [expandableRows]="true"
+      [translations]="translations"
+      [indexColumnHeader]="'#'"
+      [selectOnRowClick]="true" -->
+      <data-table-column
+          [property]="'ProductName'"
+          [header]="'Product Name'"
+          [sortable]="true"
+          [resizable]="true"
+          class="txt"
+          >
+      </data-table-column>
+      <data-table-column
+          [property]="'ProductCategory'"
+          [header]="'Product Category'"
+          [sortable]="true">
+          <!-- <ng-template #dataTableCell let-item="item">
+              <span>{{item.date | date:'yyyy-MM-dd'}}</span>
+          </ng-template> -->
+      </data-table-column>
+      <data-table-column
+          property="Company"
+          header="Company"
+          [sortable]="true"
+          width="150px">
+      </data-table-column>
+      <data-table-column
+      [property]="'PurchaseDate'"
+      [header]="'Purchase Date'"
+      [sortable]="true">
+      <ng-template #dataTableCell let-item="item">
+          <span>{{item.PurchaseDate | date:'dd-MM-yyyy'}}</span>
+      </ng-template>
+      </data-table-column>
+      <data-table-column
+      [property]="'ManufacturingDate'"
+      [header]="'Manufacturing Date'"
+      [sortable]="true">
+      <ng-template #dataTableCell let-item="item">
+          <span>{{item.ManufacturingDate | date:'dd-MM-yyyy'}}</span>
+      </ng-template>
+      </data-table-column>
+      <data-table-column
+      [property]="'ExpiryDate'"
+      [header]="'Expiry Date'"
+      [sortable]="true">
+      <ng-template #dataTableCell let-item="item">
+          <span>{{item.ExpiryDate | date:'dd-MM-yyyy'}}</span>
+      </ng-template>
+      </data-table-column>
+      <data-table-column
+          [property]="'Comments'"
+          [header]="'Comments'"
+          [sortable]="true"
+          [visible]="true">
+      </data-table-column>
+      <!-- <data-table-column
+          [property]="'ProductID'"
+          header="Action"
+          width="200"
+          resizable="true">
+          <ng-template #dataTableCell let-item="item">
+            <a class="btn" style="border: none!important;" (click)="showForEdit(item.ProductID)" title="Edit Product">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+            <a class="btn text-danger" style="border: none!important;" (click)="onDelete(item.ProductID)" title="Delete Product">
+              <i class="fa fa-trash-o"> </i>
+            </a>
+        </ng-template>
+      </data-table-column> -->
+
+  </data-table>
+</div>
+</div>
+<toaster-container></toaster-container>

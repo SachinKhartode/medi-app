@@ -13,7 +13,7 @@ export class DataService {
   userCurrentMessage = this.userMessageSource.asObservable();
 
   //for theam color
-  private colorMessageSource = new BehaviorSubject("red");
+  private colorMessageSource = new BehaviorSubject("green");
   colorCurrentMessage = this.colorMessageSource.asObservable();
 
   constructor() { }

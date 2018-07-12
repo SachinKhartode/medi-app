@@ -1,0 +1,209 @@
+<style>
+  .error{
+    color:red;
+  }
+</style>
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+                <h4 class="title">Add Product</h4>
+          </div>
+          <div class="content">
+            <form #ProductForm="ngForm" (ngSubmit)="onSubmit(ProductForm)">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="hidden" 
+                      class="form-control" 
+                      id="ProductID" 
+                      [(ngModel)]="Product.ProductID" 
+                      name="ProductID" />
+
+                      <label for="ProductName">Product Name:</label>
+                      <input type="text" class="form-control" 
+                      id="ProductName" 
+                      required 
+                      maxlength="250" 
+                      [(ngModel)]="Product.ProductName" 
+                      name="ProductName" 
+                      #ProductName="ngModel" />
+
+                      <div *ngIf="ProductName.invalid && (ProductName.dirty || ProductName.touched)" class="error">
+                        <div *ngIf="ProductName.errors.required">
+                            Product Name is required.
+                        </div>
+                        <div *ngIf="ProductName.errors.maxlength">
+                            Product Name should not be greater than 250 characters.
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="ProductCategory">Product Category:</label>
+                      <input type="text" 
+                      class="form-control" 
+                      id="ProductCategory" 
+                      maxlength="250"
+                      [(ngModel)]="Product.ProductCategory" 
+                      name="ProductCategory" 
+                      #ProductCategory = "ngModel" />
+
+                      <div *ngIf="ProductCategory.invalid && (ProductCategory.dirty || ProductCategory.touched)" class="error">
+                          <div *ngIf="ProductCategory.errors.maxlength">
+                              Category length should not be greater than 250 characters.
+                          </div>
+                        </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                  
+                      <label for="Company">Product Company Name:</label>
+                      <input type="text" 
+                        class="form-control" 
+                        id="Company" required 
+                        maxlength="250" 
+                        [(ngModel)]="Product.Company" 
+                        name="Company"
+                        #Company="ngModel" />
+                  
+                      <div *ngIf="Company.invalid && (Company.dirty || Company.touched)" class="error">
+                        <div *ngIf="Company.errors.required">
+                          Company name is required.
+                        </div>
+                        <div *ngIf="Company.errors.maxlength">
+                          Company name should not be greater than 250 characters.
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+            
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="PurchaseDate">Purchase Date:</label>
+                          <my-date-picker 
+                          id="PurchaseDate" 
+                          name="PurchaseDate"
+                          [options]="myDatePickerOptions"
+                          [(ngModel)]="Product.PurchaseDate">
+                          </my-date-picker>
+                          <!-- <input type="hidden" [(ngModel)]="Product.PurchaseDate" /> -->
+                      </div>
+                    </div>
+                  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="ManufacturingDate">Manufacturing Date:</label>
+                          <my-date-picker 
+                          id="ManufacturingDate" 
+                          name="ManufacturingDate"
+                          [options]="myDatePickerOptions"
+                          required
+                          [(ngModel)]="Product.ManufacturingDate"
+                          #ManufacturingDate="ngModel">
+                          </my-date-picker>
+                          <!-- <input type="hidden" [(ngModel)]="Product.ManufacturingDate" /> -->
+                          <div *ngIf="ManufacturingDate.invalid && (ManufacturingDate.dirty || ManufacturingDate.touched)" class="error">
+                              <div *ngIf="ManufacturingDate.errors.required">
+                                  Manufacturing date is required.
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="ExpiryDate">Expiry Date:</label>
+                            <my-date-picker 
+                            id="ExpiryDate" 
+                            name="ExpiryDate"
+                            required
+                            [options]="myDatePickerOptions"
+                            [(ngModel)]="Product.ExpiryDate"
+                            #ExpiryDate="ngModel">
+                            </my-date-picker>
+                            <!-- <input type="hidden" [(ngModel)]="Product.ExpiryDate" /> -->
+                            <div *ngIf="ExpiryDate.invalid && (ExpiryDate.dirty || ExpiryDate.touched)" class="error">
+                                <div *ngIf="ExpiryDate.errors.required">
+                                    Expiry date is required.
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="Comments">Note/Remark/Comments:</label>
+                      <textarea
+                        style="resize: none;"
+                        class="form-control" 
+                        id="Comments" 
+                        [(ngModel)]="Product.Comments" 
+                        name="Comments"
+                        rows="2" cols="50"
+                        #Comments="ngModel"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="Office">Office:</label>
+                    <input type="text" class="form-control" 
+                    id="Office" 
+                    [(ngModel)]="Product.Office" 
+                    name="Office"
+                    pattern="\d{4}"
+                    maxlength="4"
+                    minlength="4"
+                    #Office="ngModel"/>
+                  </div>
+                  <div *ngIf="Office.invalid && (Office.dirty || Office.touched)" class="alert alert-danger">
+                    <div *ngIf="Office.errors.pattern || Office.errors.minlength || Office.errors.maxlength">
+                      enter 4 digits only
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-12">
+                    <div class="form-group pull-right">
+                      <button type="submit" [disabled]="!ProductForm.form.valid" class="btn btn-success">Submit</button>
+                      <!-- [disabled]="!ProductForm.form.valid" -->
+                      <button type="button" class="btn btn-default" (click)="resetForm(ProductForm);">Reset</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<toaster-container></toaster-container>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestMethod } from '@angular/http';
 import { User } from '../Shared/User';
 import 'rxjs/add/operator/toPromise';
 
@@ -12,7 +12,7 @@ export class AuthService {
 
   login(user: User): Promise<any> {
     let url: string = `${this.BASE_URL}/User`;
-    return this.http.post(url, user, {headers: this.headers}).toPromise();
+    return this.http.post(url, user, {method:RequestMethod.Post, headers: this.headers}).toPromise();
   }
 
 //   ensureAuthenticated(token): Promise<any> {
