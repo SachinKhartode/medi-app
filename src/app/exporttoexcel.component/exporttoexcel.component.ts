@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, HostListener } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { DatePipe } from '@angular/common';
 
 //declare var XLSX : any;
 //import 'script-loader! ../node_modules/xlsx/dist/xlsx.full.min.js';
@@ -16,7 +17,7 @@ export class ExporttoexcelComponent {
 
   @Input() data : any ;
 
-  constructor(el: ElementRef) {
+  constructor(el: ElementRef, private datepipe: DatePipe) {
   }
   
 
@@ -121,7 +122,8 @@ export class ExporttoexcelComponent {
   }
 
   downloadExcel(): void {
-    FileSaver.saveAs(new Blob([this.s2ab(this.generateExcelFile())], { type: "application/octet-stream" }), "Product_List.xlsx");
+    var todayDate = this.datepipe.transform(new Date(), '_dd-MM-yyyy_hh:mm:ss');
+    FileSaver.saveAs(new Blob([this.s2ab(this.generateExcelFile())], { type: "application/octet-stream" }), "Product_List"+ todayDate +".xlsx");
   }
 
 }
